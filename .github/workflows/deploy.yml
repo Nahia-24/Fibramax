@@ -3,8 +3,6 @@ name: Deploy FibraMax to GitHub Pages
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -32,7 +30,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          # CAMBIO IMPORTANTE: Sube todo el proyecto, no solo './dist'
+          path: '.'
       
       - name: Deploy to GitHub Pages
         id: deployment
