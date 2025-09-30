@@ -30,7 +30,7 @@ Para el año **2030**, ser la empresa **líder en conectividad de fibra óptica 
 ---
 
 👉 Puedes visualizarlo directamente en **GitHub Pages** en este enlace:  
-`https://nahia-24.github.io/organigrama-fibramax/`
+`https://nahia-24.github.io/Fibramax/`
 
 ---
 
