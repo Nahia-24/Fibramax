@@ -3,95 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organigrama FibraMax S.A.S.</title>
+    <title>FibraMax S.A.S. - Sistema Organizacional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header y navegación */
+        .main-header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 30px;
+        }
+        
+        .company-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .company-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            padding: 12px 30px;
+            background: #ecf0f1;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-button.active {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Container principal */
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        /* Estilos del Organigrama */
+        .organigrama {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        
+        .nivel {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .cargo {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .cargo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gerencia { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .administrativo { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .comercial { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .planeacion { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .ti { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .operacional { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        
+        .conexion-vertical {
+            width: 4px;
+            height: 40px;
+            background: #34495e;
+            margin: 0 auto;
+        }
+        
+        .conexiones-horizontales {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            position: relative;
+        }
+        
+        .linea-principal {
+            height: 4px;
+            background: #34495e;
+            width: 80%;
+            position: absolute;
+        }
+        
+        .conector {
+            width: 4px;
+            height: 40px;
+            background: #34495e;
+            position: absolute;
+        }
+        
+        .conector-1 { left: 10%; }
+        .conector-2 { left: 30%; }
+        .conector-3 { left: 50%; }
+        .conector-4 { left: 70%; }
+        
+        .conexion-operacional {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            position: relative;
+        }
+        
+        .linea-operacional {
+            height: 4px;
+            background: #34495e;
+            width: 30%;
+            position: absolute;
+        }
+        
+        .conector-operacional {
+            width: 4px;
+            height: 40px;
+            background: #34495e;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .sub-area {
+            font-size: 0.85em;
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            line-height: 1.4;
+        }
+        
+        .cargo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 220px;
+        }
+        
+        /* Estilos del Sistema de Información */
+        .sistema-info {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .info-card h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        
+        .icon-blue { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .icon-purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
+        .icon-orange { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
+        .icon-red { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .icon-green { background: linear-gradient(135deg, #1abc9c, #16a085); color: white; }
+        
+        .info-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .info-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .info-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .sistema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .sistema-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #3498db;
+        }
+        
+        .sistema-box h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .sistema-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sistema-box ul li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .sistema-box ul li:before {
+            content: "✓";
+            color: #1abc9c;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        /* Legend */
+        .legend {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .legend h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            background: white;
+        }
+        
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .company-title {
+                font-size: 1.5em;
+            }
+            
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="main-header">
+        <div class="header-content">
+            <div class="company-info">
+                <div class="company-title">FIBRAMAX S.A.S.</div>
+                <div class="subtitle">Especialistas en Instalación de Fibra Óptica</div>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-button active" onclick="showSection('organigrama')">📊 Organigrama</button>
+                <button class="nav-button" onclick="showSection('sistema')">💻 Sistema de Información</button>
+            </nav>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <div class="company-title">FIBRAMAX S.A.S.</div>
-            <div class="subtitle">Especialistas en Instalación de Fibra Óptica</div>
-        </div>
-        
-        <div class="organigrama">
-            <!-- Nivel 1: Gerencia General -->
-            <div class="nivel">
-                <div class="cargo gerencia">GERENCIA GENERAL</div>
-            </div>
+        <!-- SECCIÓN: ORGANIGRAMA -->
+        <section id="organigrama" class="section active">
+            <h2 class="section-title">Estructura Organizacional</h2>
             
-            <!-- Conexión vertical desde gerencia -->
-            <div class="conexion-vertical"></div>
-            
-            <!-- Conexiones horizontales para las 4 áreas principales -->
-            <div class="conexiones-horizontales">
-                <div class="linea-principal"></div>
-                <div class="conector conector-1"></div>
-                <div class="conector conector-2"></div>
-                <div class="conector conector-3"></div>
-                <div class="conector conector-4"></div>
-                <div class="conector conector-5"></div>
-            </div>
-            
-            <!-- Nivel 2: Áreas principales -->
-            <div class="nivel">
-                <div class="cargo-container">
-                    <div class="cargo administrativo">ÁREA ADMINISTRATIVA Y FINANCIERA</div>
-                    <div class="sub-area">• Contabilidad<br>• Recursos Humanos<br>• Atención al Cliente</div>
+            <div class="organigrama">
+                <div class="nivel">
+                    <div class="cargo gerencia">GERENCIA GENERAL</div>
                 </div>
                 
-                <div class="cargo-container">
-                    <div class="cargo comercial">ÁREA COMERCIAL</div>
-                    <div class="sub-area">• Ventas<br>• Marketing<br>• Call Center</div>
+                <div class="conexion-vertical"></div>
+                
+                <div class="conexiones-horizontales">
+                    <div class="linea-principal"></div>
+                    <div class="conector conector-1"></div>
+                    <div class="conector conector-2"></div>
+                    <div class="conector conector-3"></div>
+                    <div class="conector conector-4"></div>
                 </div>
                 
-                <div class="cargo-container">
-                    <div class="cargo planeacion">ÁREA DE PLANEACIÓN ESTRATÉGICA</div>
-                    <div class="sub-area">• Innovación y Desarrollo<br>• Extensión y Cobertura</div>
+                <div class="nivel">
+                    <div class="cargo-container">
+                        <div class="cargo administrativo">ÁREA ADMINISTRATIVA Y FINANCIERA</div>
+                        <div class="sub-area">• Contabilidad<br>• Recursos Humanos<br>• Atención al Cliente</div>
+                    </div>
+                    
+                    <div class="cargo-container">
+                        <div class="cargo comercial">ÁREA COMERCIAL</div>
+                        <div class="sub-area">• Ventas<br>• Marketing<br>• Call Center</div>
+                    </div>
+                    
+                    <div class="cargo-container">
+                        <div class="cargo planeacion">ÁREA DE PLANEACIÓN ESTRATÉGICA</div>
+                        <div class="sub-area">• Innovación y Desarrollo<br>• Extensión y Cobertura</div>
+                    </div>
+                    
+                    <div class="cargo-container">
+                        <div class="cargo ti">ÁREA TI</div>
+                        <div class="sub-area">• Mesa de Ayuda<br>• Infraestructura de TI<br>• Gestión de Aplicaciones<br>• Seguridad de la Información</div>
+                    </div>
                 </div>
                 
-                <div class="cargo-container">
-                    <div class="cargo ti">ÁREA TI</div>
-                    <div class="sub-area">• Mesa de Ayuda<br>• Infraestructura de TI<br>• Gestión de Aplicaciones<br>• Seguridad de la Información</div>
+                <div class="conexion-operacional">
+                    <div class="linea-operacional"></div>
+                    <div class="conector-operacional"></div>
                 </div>
-              
-                <div class="cargo-container">
-                    <div class="cargo operacional">ÁREA OPERACIONAL</div>
-                    <div class="sub-area">• Dpto. Instalación y Mantenimiento<br>• Soporte Técnico<br>• Gestión de Reclamos</div>
+                
+                <div class="nivel">
+                    <div class="cargo-container">
+                        <div class="cargo operacional">ÁREA OPERACIONAL</div>
+                        <div class="sub-area">• Dpto. Instalación y Mantenimiento<br>• Soporte Técnico<br>• Gestión de Reclamos</div>
+                    </div>
                 </div>
             </div>
-            </div>      
             
-        </div>
-        
-        <!-- Leyenda -->
-        <div class="legend">
-            <h3>Distribución de Áreas por Color</h3>
-            <div class="legend-items">
-                <div class="legend-item">
-                    <div class="legend-color gerencia"></div>
-                    <span><strong>Gerencia General</strong> - Dirección Estratégica</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color administrativo"></div>
-                    <span><strong>Área Administrativa y Financiera</strong> - Gestión Interna</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color comercial"></div>
-                    <span><strong>Área Comercial</strong> - Ventas y Marketing</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color planeacion"></div>
-                    <span><strong>Área de Planeación Estratégica</strong> - Desarrollo</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color ti"></div>
-                    <span><strong>Área TI</strong> - Tecnología y Sistemas</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color operacional"></div>
-                    <span><strong>Área Operacional</strong> - Instalación y Mantenimiento</span>
+            <div class="legend">
+                <h3>Distribución de Áreas por Color</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color gerencia"></div>
+                        <span><strong>Gerencia General</strong> - Dirección Estratégica</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color administrativo"></div>
+                        <span><strong>Área Administrativa y Financiera</strong></span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color comercial"></div>
+                        <span><strong>Área Comercial</strong> - Ventas y Marketing</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color planeacion"></div>
+                        <span><strong>Área de Planeación Estratégica</strong></span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color ti"></div>
+                        <span><strong>Área TI</strong> - Tecnología y Sistemas</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color operacional"></div>
+                        <span><strong>Área Operacional</strong> - Instalaciones</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- SECCIÓN: SISTEMA DE INFORMACIÓN -->
+        <section id="sistema" class="section">
+            <h2 class="section-title">Sistema de Información FibraMax</h2>
+            
+            <div class="sistema-info">
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon icon-blue">📋</div>
+                        Descripción del Sistema
+                    </h3>
+                    <p>El Sistema de Información de FibraMax S.A.S. es una plataforma integrada que gestiona todos los procesos operativos, administrativos y comerciales relacionados con la instalación de fibra óptica. Permite la coordinación eficiente entre áreas, seguimiento de proyectos, gestión de clientes y análisis de datos para la toma de decisiones estratégicas.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon icon-purple">🎯</div>
+                        Objetivos del Sistema
+                    </h3>
+                    <ul class="info-list">
+                        <li>Optimizar la gestión de proyectos de instalación de fibra óptica</li>
+                        <li>Centralizar la información de clientes, contratos y servicios</li>
+                        <li>Mejorar la comunicación entre áreas operativas y administrativas</li>
+                        <li>Facilitar el seguimiento en tiempo real de instalaciones y mantenimientos</li>
+                        <li>Generar reportes y análisis para la toma de decisiones</li>
+                        <li>Garantizar la seguridad y confidencialidad de la información</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon icon-orange">⚙️</div>
+                        Componentes del Sistema
+                    </h3>
+                    <div class="sistema-grid">
+                        <div class="sistema-box">
+                            <h4>📱 Módulo Comercial</h4>
+                            <ul>
+                                <li>Gestión de leads y oportunidades</li>
+                                <li>CRM de clientes</li>
+                                <li>Cotizaciones y propuestas</li>
+                                <li>Seguimiento de ventas</li>
+                            </ul>
+                        </div>
+                        <div class="sistema-box">
+                            <h4>🔧 Módulo Operacional</h4>
+                            <ul>
+                                <li>Planificación de instalaciones</li>
+                                <li>Asignación de técnicos</li>
+                                <li>Inventario de materiales</li>
+                                <li>Gestión de mantenimientos</li>
+                            </ul>
+                        </div>
+                        <div class="sistema-box">
+                            <h4>💰 Módulo Financiero</h4>
+                            <ul>
+                                <li>Facturación electrónica</li>
+                                <li>Gestión de pagos</li>
+                                <li>Control de costos</li>
+                                <li>Reportes financieros</li>
+                            </ul>
+                        </div>
+                        <div class="sistema-box">
+                            <h4>👥 Módulo RRHH</h4>
+                            <ul>
+                                <li>Gestión de personal</li>
+                                <li>Control de asistencia</li>
+                                <li>Nómina</li>
+                                <li>Evaluación de desempeño</li>
+                            </ul>
+                        </div>
+                        <div class="sistema-box">
+                            <h4>🖥️ Infraestructura TI</h4>
+                            <ul>
+                                <li>Servidores y redes</li>
+                                <li>Base de datos centralizada</li>
+                                <li>Sistema de respaldos</li>
+                                <li>Monitoreo de red</li>
+                            </ul>
+                        </div>
+                        <div class="sistema-box">
+                            <h4>🔒 Seguridad</h4>
+                            <ul>
+                                <li>Control de accesos</li>
+                                <li>Encriptación de datos</li>
+                                <li>Auditoría de sistema</li>
+                                <li>Cumplimiento normativo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon icon-red">📊</div>
+                        Flujo de Información
+                    </h3>
+                    <p><strong>1. Captación de Cliente:</strong> El área comercial registra el cliente en el CRM y genera una solicitud de servicio.</p>
+                    <p><strong>2. Planeación:</strong> El área de planeación evalúa factibilidad técnica, cobertura y asigna recursos necesarios.</p>
+                    <p><strong>3. Operación:</strong> El área operacional programa la instalación, asigna técnicos y ejecuta el servicio.</p>
+                    <p><strong>4. Seguimiento:</strong> Mesa de ayuda brinda soporte post-instalación y gestiona incidencias.</p>
+                    <p><strong>5. Facturación:</strong> El área administrativa genera la factura y procesa el pago del cliente.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon icon-green">🚀</div>
+                        Beneficios del Sistema
+                    </h3>
+                    <ul class="info-list">
+                        <li>Reducción de tiempos de respuesta en un 40%</li>
+                        <li>Mejora en la satisfacción del cliente</li>
+                        <li>Optimización de recursos técnicos y humanos</li>
+                        <li>Trazabilidad completa de proyectos</li>
+                        <li>Reducción de errores operativos</li>
+                        <li>Información en tiempo real para directivos</li>
+                        <li>Escalabilidad para crecimiento empresarial</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>
