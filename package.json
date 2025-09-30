@@ -1,0 +1,29 @@
+{
+  "name": "fibramax-organizacion",
+  "version": "1.0.0",
+  "description": "Sistema organizacional de FibraMax S.A.S - Especialistas en instalación de fibra óptica",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=8080 --open=index.html",
+    "preview": "live-server --port=8080 --open=index.html --no-browser",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "validate": "html-validator --file=index.html --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nahia-24/Fibramax.git"
+  },
+  "keywords": [
+    "fibramax",
+    "fibra-optica",
+    "organigrama",
+    "sistema-informacion"
+  ],
+  "author": "FibraMax S.A.S.",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.0.0",
+    "html-validator-cli": "^7.1.0"
+  }
+}
