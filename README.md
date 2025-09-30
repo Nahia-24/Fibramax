@@ -1,5 +1,9 @@
 # 🌐 FibraMax S.A.S.
 
+![FibraMax Logo](https://img.shields.io/badge/FibraMax-Fibra%20Óptica-blue)
+![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 **FibraMax S.A.S.** es una empresa colombiana dedicada exclusivamente a la **instalación de fibra óptica**.  
 Nos especializamos en el **tendido, conexión y mantenimiento de redes de fibra**, ofreciendo soluciones técnicas precisas y seguras para hogares, empresas y sectores educativos.
 
@@ -15,8 +19,15 @@ Para el año **2030**, ser la empresa **líder en conectividad de fibra óptica 
 
 ---
 
-## 🗂️ Contenido de este repositorio
-Este repositorio contiene el **Organigrama de FibraMax S.A.S.**, desarrollado en HTML y CSS, que refleja la estructura organizacional de la empresa.  
+## 🛠️ Tecnologías Utilizadas
+
+- HTML5
+- CSS3 (Grid, Flexbox, Animations)
+- JavaScript Vanilla
+- GitHub Pages
+- GitHub Actions (CI/CD)
+
+---
 
 👉 Puedes visualizarlo directamente en **GitHub Pages** en este enlace:  
 `https://nahia-24.github.io/organigrama-fibramax/`
@@ -45,3 +56,7 @@ Nuestro diseño de **topología en anillo con malla híbrida** garantiza:
 - Maicol Masabuel Montoya  
 - Kevin Alejandro Campo Lesama  
 - Nahia Montoya Sánchez  
+
+## 📝 Licencia
+
+Este proyecto es propiedad de **FibraMax S.A.S.** - Todos los derechos reservados.
