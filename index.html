@@ -128,14 +128,14 @@
         .nivel {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
             width: 100%;
             margin: 20px 0;
         }
         
         .cargo {
-            padding: 15px 20px;
+            padding: 15px 15px;
             border-radius: 12px;
             color: white;
             font-weight: bold;
@@ -160,7 +160,7 @@
         
         .conexion-vertical {
             width: 4px;
-            height: 40px;
+            height: 30px;
             background: #34495e;
             margin: 0 auto;
         }
@@ -177,7 +177,7 @@
         .linea-principal {
             height: 4px;
             background: #34495e;
-            width: 80%;
+            width: 90%;
             position: absolute;
         }
         
@@ -188,40 +188,17 @@
             position: absolute;
         }
         
-        .conector-1 { left: 10%; }
-        .conector-2 { left: 30%; }
-        .conector-3 { left: 50%; }
-        .conector-4 { left: 70%; }
-        
-        .conexion-operacional {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 40px;
-            position: relative;
-        }
-        
-        .linea-operacional {
-            height: 4px;
-            background: #34495e;
-            width: 30%;
-            position: absolute;
-        }
-        
-        .conector-operacional {
-            width: 4px;
-            height: 40px;
-            background: #34495e;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        /* CONECTORES CORREGIDOS - 5 áreas al mismo nivel */
+        .conector-1 { left: 15%; }
+        .conector-2 { left: 33%; }
+        .conector-3 { left: 49.9%; }
+        .conector-4 { left: 67%; }
+        .conector-5 { left: 85%; }
         
         .sub-area {
             font-size: 0.85em;
             margin-top: 10px;
-            padding: 10px 12px;
+            padding: 10px 15px;
             background: rgba(255,255,255,0.2);
             border-radius: 8px;
             backdrop-filter: blur(10px);
@@ -232,7 +209,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 220px;
+            max-width: 200px;
         }
         
         /* Estilos del Sistema de Información */
@@ -348,16 +325,10 @@
         /* Legend */
         .legend {
             margin-top: 40px;
-            padding: 25px;
+            padding: 20px;
             background: #f8f9fa;
             border-radius: 12px;
             border-left: 5px solid #3498db;
-        }
-        
-        .legend h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.3em;
         }
         
         .legend-items {
@@ -369,8 +340,8 @@
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 8px;
+            gap: 10px;
+            padding: 1px;
             border-radius: 6px;
             background: white;
         }
@@ -395,6 +366,14 @@
             .nav-button {
                 padding: 10px 20px;
                 font-size: 0.9em;
+            }
+            
+            .nivel {
+                gap: 15px;
+            }
+            
+            .cargo-container {
+                max-width: 150px;
             }
         }
     </style>
@@ -431,6 +410,7 @@
                     <div class="conector conector-2"></div>
                     <div class="conector conector-3"></div>
                     <div class="conector conector-4"></div>
+                    <div class="conector conector-5"></div>
                 </div>
                 
                 <div class="nivel">
@@ -453,14 +433,7 @@
                         <div class="cargo ti">ÁREA TI</div>
                         <div class="sub-area">• Mesa de Ayuda<br>• Infraestructura de TI<br>• Gestión de Aplicaciones<br>• Seguridad de la Información</div>
                     </div>
-                </div>
-                
-                <div class="conexion-operacional">
-                    <div class="linea-operacional"></div>
-                    <div class="conector-operacional"></div>
-                </div>
-                
-                <div class="nivel">
+ 
                     <div class="cargo-container">
                         <div class="cargo operacional">ÁREA OPERACIONAL</div>
                         <div class="sub-area">• Dpto. Instalación y Mantenimiento<br>• Soporte Técnico<br>• Gestión de Reclamos</div>
